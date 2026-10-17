@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Flash Player",
+  "version": "1.0",
+  "description": "Abre arquivos .swf diretamente no navegador.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["engine.js", "embed.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
